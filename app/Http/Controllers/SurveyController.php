@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Answer;
 class SurveyController extends Controller
 {
-
-
-     /**
+    
+    
+    /**
     * Create a new controller instance.
     *
     * @return void
@@ -23,7 +24,7 @@ class SurveyController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-
+    
     
     public function home(Request $request) 
     {
@@ -35,12 +36,12 @@ class SurveyController extends Controller
     {
         //display published questions
         $questions =  Question::where('status', 'published')->get();
-
+        
         //display archieved questions
         $archieves =  Question::where('status', 'deleted')->get();
         return view('admin.survey', compact('questions','archieves'));
         
-}
+    }
     
     public function new_question(){
         return view('admin.new-question');
@@ -57,7 +58,7 @@ class SurveyController extends Controller
         $question->status = "published" ;
         $question->survey_id = 1 ;
         $question->save();
-            
+        
         return redirect('/survey');
     }
     public function update_question(Request $request){
@@ -66,14 +67,14 @@ class SurveyController extends Controller
         $question->title = $request->title;
         $question->question_type = $request->question_type;
         $question->update();
-
+        
         return redirect('/survey');
     }
     public function edit_question($id){      
         
-          //get question by id 
+        //get question by id 
         $question =  Question::where('id', $id)->first();
-
+        
         return view('admin.edit-question', compact('question'));
     }
     
@@ -84,14 +85,27 @@ class SurveyController extends Controller
         
         return redirect('/survey');
     }
-
+    
     public function retrieve_question($id){  
         //get question by id and update to published
-        $question = Question::find($id);              
+        $question = Question::find($id);         $question = Question::find($id);              
         $question->status = "published";
         $question->update();
         
         return redirect('/survey');
     }
     
+    
+    public function view_results(){
+        $answers = Answer::get();
+        return view('admin.survey-results',compact('answers'));
+    }
+    
+    public function view_archives()
+    {        
+        //display archieved questions
+        $archieves =  Question::where('status', 'deleted')->get();
+        return view('admin.retrieve-question', compact('archieves'));
+        
+    }
 }
