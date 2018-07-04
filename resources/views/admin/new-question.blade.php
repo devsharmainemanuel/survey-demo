@@ -49,7 +49,7 @@
                                              <option value="fillintheblank">Fill in The Blank</option>
                                              <option value="textarea">Textarea</option>
                                              <option value="single">Single Select</option>
-                                             <option value="multiple">Multiple Select</option>
+                                             {{-- <option value="multiple">Multiple Select</option> --}}
                                              <option value="ratings">Ratings(1-5)</option>
                                         </select>
                                         @if ($errors->has('question_type'))
