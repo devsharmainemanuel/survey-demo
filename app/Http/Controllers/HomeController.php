@@ -38,10 +38,9 @@ class HomeController extends Controller
         
         $request = $requests->except('_token');
         
-        $this->validate($requests, [
-            'answer' => 'required',
-            ]);
-            
+
+// dd($request);
+ 
             $user = Auth::user()->id;
             
             //check if user already answer the survey
@@ -54,10 +53,11 @@ class HomeController extends Controller
                   
                 //loop every answer and store each answer
                 foreach ($answers as $key => $value) {
-                    
+                
+                    $answer_value = is_array($value) ? implode(',',$value) : $value;
                     $answer = new Answer();            
                     $answer->question_id = $key;
-                    $answer->answer = $value;
+                    $answer->answer = $answer_value;
                     $answer->user_id = $user;
                     $answer->survey_id =  1;
                     $answer->save();

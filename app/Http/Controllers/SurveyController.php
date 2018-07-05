@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use App\Option;
 use Illuminate\Http\Response;
 class SurveyController extends Controller
 {    
@@ -48,8 +49,8 @@ class SurveyController extends Controller
     
     public function store_question(Request $request){
         
-        $arr = $request->except('_token');
-        
+        $data = $request->except('_token');
+
         //store submitted data to Question
         $question = new Question();
         $question->title = $request->title;
@@ -58,16 +59,60 @@ class SurveyController extends Controller
         $question->status = "published" ;
         $question->survey_id = 1 ;
         $question->save();
+
+
         
+        if($question->save() && $request->question_type == "multiple"){
+            $id  = $question->id;            
+            foreach ($data['option'] as $key => $value) {    
+                $option = new Option();
+                $option->question_id = $id;
+                $option->text = $value;
+                $option->save();
+            }
+        }
+
+      
         return redirect('/survey');
     }
     
     public function update_question(Request $request){
+     
         
-        $question = Question::find($request->question_id);          
+      //  dd($request->all());
+        $question = Question::find($request->question_id);    
+        
+     
+
+
         $question->title = $request->title;
         $question->question_type = $request->question_type;
         $question->update();
+           if( $request->question_type == "multiple"){
+            $id  = $request->question_id;            
+            foreach ($request['answer'][$id] as $key => $value) {    
+                $option = Option::find($key);
+         
+                if($option){
+                   
+                    $option->question_id = $id;
+                    $option->text = $value;
+                    $option->update(); 
+                }
+                else{
+                    $option = new Option;
+                    $option->question_id = $id;
+                    $option->text = $value;
+                    $option->save();
+                }
+               
+            }
+        }
+
+        
+
+
+
         
         return redirect('/survey');
     }

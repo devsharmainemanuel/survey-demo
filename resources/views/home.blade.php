@@ -27,7 +27,21 @@
                                     
                                     @if($question->question_type == "fillintheblank")
                                     <input type="text" name="answer[{{$question->id}}]" class="form-control" required>
-                                    
+                                    @elseif($question->question_type == "multiple")
+                                
+                                    @foreach($question->options as $option)
+                                            <div class="col-md-12">
+                                                    
+                                                    <div class="input-group">
+                                                        <span class="input-group">
+                                            
+                                            <input type="checkbox" name="answer[{{$question->id}}][{{$option->id}}]" value="{{$option->id}}"> {{$option->text}}
+                                                        </span>
+                                                    </div>
+                                                    
+                                                </div>
+                                            
+                                    @endforeach
                                     @elseif($question->question_type == "single")
                                     <div class="row">
                                         <div class="col-md-6">
