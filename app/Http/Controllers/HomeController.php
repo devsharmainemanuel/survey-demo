@@ -51,17 +51,14 @@ class HomeController extends Controller
                 //save only if the user has not yet answered the survey
                 //get all submitted data
                 $answers = $request['answer'];
-                $id = $user;
-                
-                $data = array();
-                
+                  
                 //loop every answer and store each answer
                 foreach ($answers as $key => $value) {
                     
                     $answer = new Answer();            
                     $answer->question_id = $key;
                     $answer->answer = $value;
-                    $answer->user_id =  $request['user_id'];
+                    $answer->user_id = $user;
                     $answer->survey_id =  1;
                     $answer->save();
                     

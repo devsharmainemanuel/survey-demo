@@ -38,4 +38,6 @@ Route::get('/survey/{id}/edit', 'SurveyController@edit_question');
 Route::get('/survey/{id}/delete', 'SurveyController@delete_question');
 Route::get('/survey/{id}/retrieve', 'SurveyController@retrieve_question');
 
+
+Route::get('/result/{id}', 'SurveyController@user_result')->name('user.result');
 /*end admin routes*/

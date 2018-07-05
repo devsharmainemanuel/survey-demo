@@ -15,11 +15,13 @@
                     <div class="panel-body">                         
                          <ul class="list-group">
                               @foreach ($answers as $key => $value )
-                              
+                                   @php
+                                             $id = $value->user_id;
+                                   @endphp
                               <li class="list-group-item" >
-                                   <a href="/survey/{{$value->id}}/edit"> {{$value}}</a>
+                                   <a href="/result/{{$id}}"> {{$value->getUser($id)->name}}</a>
                                    <span class="pull-right">
-                                        <a href="/survey/{{$value->id}}/delete"> <span class="btn btn-xs btn-default" >delete</span></a>
+                                        <a href="/survey/{{$id}}/delete"> <span class="btn btn-xs btn-default" >delete</span></a>
                                    </span>
                               </li>  
                               

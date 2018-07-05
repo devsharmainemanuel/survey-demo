@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use Illuminate\Http\Response;
 class SurveyController extends Controller
 {
     
@@ -88,7 +89,7 @@ class SurveyController extends Controller
     
     public function retrieve_question($id){  
         //get question by id and update to published
-        $question = Question::find($id);         $question = Question::find($id);              
+        $question = Question::find($id);            
         $question->status = "published";
         $question->update();
         
@@ -97,7 +98,10 @@ class SurveyController extends Controller
     
     
     public function view_results(){
-        $answers = Answer::get();
+
+        $answers = Answer::distinct()->get(['user_id']);
+   
+
         return view('admin.survey-results',compact('answers'));
     }
     
@@ -107,5 +111,23 @@ class SurveyController extends Controller
         $archieves =  Question::where('status', 'deleted')->get();
         return view('admin.retrieve-question', compact('archieves'));
         
+    }
+
+    public function user_result($id){
+
+        $questions =  Question::where('status', 'published')->get();
+        $answers  = Answer::where('user_id',$id)->get();
+
+        $user_answer = [];
+
+        foreach ($answers as $key => $value) {
+            # code...
+            $user_answer = array(
+                'questions' => $questions,
+                'answers' =>   $value
+            );
+        }
+
+        return view('admin.user-result', compact('questions','answers','user_answer')); 
     }
 }

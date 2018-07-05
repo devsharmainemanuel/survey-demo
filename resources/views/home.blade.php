@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     @elseif($question->question_type == "textarea")
-                                    <textarea type="text" name="answer[]" class="form-control"> </textarea>
+                                    <textarea type="text" name="answer[{{$question->id}}]" class="form-control"> </textarea>
                                     @elseif($question->question_type == "ratings")
                                     
                                     <div class="row ratings">

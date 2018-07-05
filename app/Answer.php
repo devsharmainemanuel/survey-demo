@@ -3,12 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Answer extends Model
 {
+    //
+    protected $table = 'answers';
+    
+    
     protected $fillable = ['user_id', 'question_id', 'survey_id','answer'];
+    
+    public static function getUser($id){
+        
+        $user =  User::where('id','=',$id)->first();
+        return $user;
+    }
 
-    protected $hidden = [
-        'user_id'
-    ];
+    public function question(){
+        return $this->belongsTo(Question::class);
+    }
 }
