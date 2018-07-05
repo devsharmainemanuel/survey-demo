@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         //display only published questions
-        $questions =  Question::where('status', 'published')->get();
+        $questions =  Question::where('status', 'published')->orderBy('sort_order')->get();
         return view('home', compact('questions'));  
         
     }

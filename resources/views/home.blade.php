@@ -23,7 +23,7 @@
                             
                             <div class="form-group">
                                 <div class="col-md-12 well ">
-                                    <div class="question_title">{{$question->title}}</div>
+                                    <div class="question_title">{{$question->sort_order+1 }}.  {{$question->title}}</div>
                                     
                                     @if($question->question_type == "fillintheblank")
                                     <input type="text" name="answer[{{$question->id}}]" class="form-control" required>
