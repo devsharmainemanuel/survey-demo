@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSortQuestions extends Migration
 {
@@ -14,8 +14,8 @@ class AddSortQuestions extends Migration
     public function up()
     {
         //
-        Schema::table('questions', function (Blueprint $table) {     
-            $table->integer('sort_order')->default(0);         
+        Schema::table('questions', function (Blueprint $table) {
+            $table->integer('sort_order')->default(0);
         });
     }
 
