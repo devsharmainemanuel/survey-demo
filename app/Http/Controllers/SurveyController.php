@@ -56,9 +56,9 @@ class SurveyController extends Controller
     {
         $data = $request->all();
 
-        foreach ($data['data'] as $key => $value) {
-            $question = Question::find($value['question_id']);
-            $question->sort_order = $value['order'];
+        foreach ($data[ 'data' ] as $key => $value) {
+            $question = Question::find($value[ 'question_id' ]);
+            $question->sort_order = $value[ 'order' ];
             $question->update();
         }
 
