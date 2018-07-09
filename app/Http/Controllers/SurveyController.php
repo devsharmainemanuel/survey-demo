@@ -31,6 +31,13 @@ class SurveyController extends Controller
         return view('admin.survey', compact('questions', 'archieves'));
     }
 
+
+    /**
+     * Show the deleted questions
+     *
+     * @return \Illuminate\View\View
+     */
+
     public function view_archives()
     {
         //display archieved questions
@@ -39,6 +46,12 @@ class SurveyController extends Controller
         return view('admin.retrieve-question', compact('archieves'));
     }
 
+
+    
+    /**
+     * update the sort order
+     *
+     */
     public function sort_questions(Request $request)
     {
         $data = $request->all();

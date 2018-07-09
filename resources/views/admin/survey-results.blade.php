@@ -19,10 +19,7 @@
                                              $id = $value->user_id;
                                    @endphp
                               <li class="list-group-item" >
-                                   <a href="/result/{{$id}}"> {{$value->getUser($id)->name}}</a>
-                                   <span class="pull-right">
-                                        <a href="/survey/{{$id}}/delete"> <span class="btn btn-xs btn-default" >delete</span></a>
-                                   </span>
+                                   <a href="/result/{{$id}}"> {{$value->getUser($id)->name}}</a>                               
                               </li>  
                               
                               @endforeach

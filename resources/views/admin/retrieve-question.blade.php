@@ -17,9 +17,9 @@
                               @foreach ($archieves as $question)
                               
                               <li class="list-group-item" >
-                                   <a href="/survey/{{$question->id}}/edit"> {{$question->title}}</a>
+                                   <a href=""> {{$question->title}}</a>
                                    <span class="pull-right">
-                                        <a href="/survey/{{$question->id}}/retrieve"> <span class="btn btn-xs btn-default" >retrieve</span></a>
+                                        <a href="/question/{{$question->id}}/retrieve"> <span class="btn btn-xs btn-default" >retrieve</span></a>
                                    </span>
                               </li>  
                               
