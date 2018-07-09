@@ -8,7 +8,7 @@ class Option extends Model
 {
     //
     protected $table = 'options';
-    protected $fillable = [ 'id', 'question_id', 'text' ];
+    protected $fillable = ['id', 'question_id', 'text'];
 
     public function options()
     {
