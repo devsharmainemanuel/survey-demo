@@ -14,7 +14,7 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin');
     }
 
-    public function showLoginForm(Request $request)
+    public function showLoginForm()
     {
         return view('auth.admin-login');
     }
@@ -22,7 +22,7 @@ class AdminLoginController extends Controller
     public function login(Request $request)
     {
 
-      //attempt to log the user in
+        //attempt to log the user in
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], false)) {
 
             //if true go to dashboard
