@@ -66,7 +66,7 @@ class QuestionController extends Controller
 
         if ($question->save() && $request->question_type == 'multiple') {
             $id = $question->id;
-            foreach ($data[ 'option' ] as $key => $value) {
+            foreach ($data['option'] as $key => $value) {
                 $option = new Option();
                 $option->question_id = $id;
                 $option->text = $value;
@@ -87,7 +87,7 @@ class QuestionController extends Controller
         $question->update();
         if ($request->question_type == 'multiple') {
             $id = $request->question_id;
-            foreach ($request[ 'answer' ][ $id ] as $key => $value) {
+            foreach ($request['answer'][$id] as $key => $value) {
                 $option = Option::find($key);
 
                 if ($option) {
