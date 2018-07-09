@@ -19,6 +19,6 @@ class ApiController extends Controller
 
     public function submit_survey(Request $request)
     {
-        return $request['answers'];
+        return $request[ 'answers' ];
     }
 }

@@ -46,7 +46,7 @@ class HomeController extends Controller
         if (count($user_answer) == 0) {
             //save only if the user has not yet answered the survey
             //get all submitted data
-            $answers = $request['answer'];
+            $answers = $request[ 'answer' ];
 
             //loop every answer and store each answer
             foreach ($answers as $key => $value) {
