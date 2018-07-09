@@ -22,7 +22,7 @@ class SurveyController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function home(Request $request)
     {

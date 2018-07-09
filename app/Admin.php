@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    //use Notifiable;
 
     protected $guard = 'admin';
 
