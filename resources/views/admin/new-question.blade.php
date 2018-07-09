@@ -7,7 +7,7 @@
                <div class="panel panel-default">
                     
                     <div class="panel-body">                         
-                         <form class="form-horizontal" method="POST" action="/survey/save">
+                         <form class="form-horizontal" method="POST" action="/question/save">
                               {{ csrf_field() }}
                               
                               <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

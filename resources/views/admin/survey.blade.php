@@ -10,8 +10,7 @@
                     <div class="panel-heading">
                          <div class="row">
                               <div class="col-md-9"> Survey  </div>
-                              {{--  <div class="col-md-3"><a href="survey/new" class="btn btn-primary">Create Survey</a></div>  --}}
-                              <div class="col-md-3"><a href="survey/new" class="btn btn-primary">Create Question</a></div>
+                              <div class="col-md-3"><a href="question/new" class="btn btn-primary">Create Question</a></div>
                          </div>
                     </div>                    
                     <div class="panel-body">     
@@ -24,23 +23,15 @@
                                    
                                    @foreach ($questions as $question)
                                    
-                                   <li class="list-group-item list-question" data-id="{{$question->id}}" data-survey-id="{{$question->survey_id}}">
-                                        {{-- <input type="text" value="{{$question->id}}" name="question[{{$question->id}}]"> --}}
-                                        <a href="/survey/{{$question->id}}/edit">   {{$question->title}}</a>
+                                   <li class="list-group-item list-question" data-id="{{$question->id}}" data-survey-id="{{$question->survey_id}}">                                    
+                                        <a href="/question/{{$question->id}}/edit">   {{$question->title}}</a>
                                         <span class="pull-right">
-                                             <a href="/survey/{{$question->id}}/delete"> <span class="btn btn-xs btn-default" >delete</span></a>
+                                             <a href="/question/{{$question->id}}/delete"> <span class="btn btn-xs btn-default" >delete</span></a>
                                         </span>
                                    </li>  
                                    
                                    @endforeach
                               </ul>
-                              {{-- <div class="form-group">
-                                   <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">
-                                             Submit
-                                        </button>
-                                   </div>
-                              </div> --}}
                          </form>
                     </div>
                </div>
@@ -91,8 +82,7 @@
                          alert('Error: ' + data); 
                      });
                }
-          });
-         // $( "#sortable" ).disableSelection();
+          });         
      } );
 </script>
 @endsection

@@ -7,7 +7,7 @@
                <div class="panel panel-default">
                     
                     <div class="panel-body">                         
-                         <form class="form-horizontal" method="POST" action="/survey/update">
+                         <form class="form-horizontal" method="POST" action="/question/update">
                               {{ csrf_field() }}
                                    
                               <input type="hidden" name="question_id" value="{{$question->id}}">
@@ -78,7 +78,7 @@
                                                           <span class="input-group">
                                                                
                                                                <input type="text" class="form-control" name="answer[{{$question->id}}][{{$option->id}}]" data-id="{{$option->id}}" value="{{$option->text}}"> 
-                                                                <button class="btn btn-danger btn-xs" id="delete">delete</button>
+                                                       
                                                           </span>
                                                      </div>
                                                      
