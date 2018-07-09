@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use App\Option;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -24,15 +23,14 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-
     public function index()
     {
         //display published questions
         $questions = Question::where('status', 'published')->orderBy('sort_order')->get();
 
         return view('admin.survey', compact('questions', 'archieves'));
-    }    
-  
+    }
+
     public function view_archives()
     {
         //display archieved questions
@@ -48,13 +46,12 @@ class SurveyController extends Controller
         foreach ($data['data'] as $key => $value) {
             $question = Question::find($value['question_id']);
             $question->sort_order = $value['order'];
-            $question->update();  
+            $question->update();
         }
 
         return $data;
     }
 
-  
     //RESULTS
     public function view_results()
     {
