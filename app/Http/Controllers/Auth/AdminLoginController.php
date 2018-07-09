@@ -23,7 +23,7 @@ class AdminLoginController extends Controller
     {
 
         //attempt to log the user in
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], false)) {
+        if (Auth::guard('admin')->attempt([ 'email' => $request->email, 'password' => $request->password ], false)) {            
 
             //if true go to dashboard
             return redirect()->intended(route('admin.dashboard'));

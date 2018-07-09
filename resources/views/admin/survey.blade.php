@@ -76,7 +76,7 @@
                          url: '/api/survey/sort'
                          
                     }).success(function(data) {
-                         console.log(data);
+                       //  console.log(data);
                      })
                      .error(function(data) { 
                          alert('Error: ' + data); 

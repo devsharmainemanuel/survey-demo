@@ -83,6 +83,7 @@ class QuestionController extends Controller
 
         $question->title = $request->title;
         $question->question_type = $request->question_type;
+        $question->question_category = $request->question_category;
         $question->update();
         if ($request->question_type == 'multiple') {
             $id = $request->question_id;

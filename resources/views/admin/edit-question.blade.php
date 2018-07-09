@@ -30,9 +30,9 @@
                                         <div class="col-md-4">
                                              <select  id="question_category" class="form-control " name="question_category" value="{{ old('question_category') }}"  >
                                                   <option value="">--SELECT--</option>
-                                                  <option value="General">General</option>
-                                                  <option value="Objective">Objective</option>
-                                                  <option value="Comments">Comments</option>                                      
+                                                  <option value="General"  @if($question->question_category == "General")selected="selected" @endif >General</option>
+                                                  <option value="Objective" @if($question->question_category == "Objective")selected="selected" @endif >Objective</option>
+                                                  <option value="Comments" @if($question->question_category == "Comments")selected="selected" @endif  >Comments</option>                                      
                                              </select>
                                              @if ($errors->has('question_category'))
                                              <span class="help-block">

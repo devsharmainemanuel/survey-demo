@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
 Auth::routes();
 
 /*admin routes*/
@@ -41,8 +37,3 @@ Route::post('/question/update', 'QuestionController@update_question');
 
 /*jquery api*/
 Route::post('/api/survey/sort', 'SurveyController@sort_questions')->name('question.sort');
-
-/*user routes */
-//Route::get('/home', 'HomeController@index')->name('home');
-//Route::post('/submit', 'HomeController@store_survey');
-/*end user routes */
