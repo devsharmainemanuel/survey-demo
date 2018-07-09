@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () { return view('home'); });
+Route::get('/', function () {
+    return view('home');
+});
 
 Auth::routes();
 
 /*user routes */
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/submit', 'HomeController@store_survey');     
+Route::post('/submit', 'HomeController@store_survey');
 /*end user routes */
-
 
 /*admin routes*/
 
