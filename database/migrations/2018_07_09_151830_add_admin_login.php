@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddAdminLogin extends Migration
@@ -15,12 +13,12 @@ class AddAdminLogin extends Migration
     {
         //
         DB::table('admins')->insert(
-            array(
-                'name' => 'admin',
-                'email' => 'admin@test.com',
-                'role' => 'admin',
-                'password' => Hash::make('admintest')
-            )
+            [
+                'name'     => 'admin',
+                'email'    => 'admin@test.com',
+                'role'     => 'admin',
+                'password' => Hash::make('admintest'),
+            ]
         );
     }
 
