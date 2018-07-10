@@ -33,8 +33,7 @@ class QuestionController extends Controller
 
     public function delete_question($id)
     {
-        $question = Question::find($id);
-        $question->delete();
+        Question::find($id)->delete();
 
         return redirect('/survey');
     }
@@ -42,15 +41,13 @@ class QuestionController extends Controller
     public function retrieve_question($id)
     {
         //get question by id and update to published
-        $question = Question::withTrashed()->find($id)->restore();
+        Question::withTrashed()->find($id)->restore();
 
         return redirect('/survey');
     }
 
     public function store_question(Request $request)
     {
-        $data = $request->except('_token');
-
         //store submitted data to Question
         $question = new Question();
         $question->title = $request->title;
@@ -76,8 +73,7 @@ class QuestionController extends Controller
 
     public function update_question(Request $request)
     {
-        $data = $request->except('_token');
-        //  return $data;
+
         $question = Question::find($request->question_id);
         $question->title = $request->title;
         $question->question_type = $request->question_type;
@@ -93,9 +89,11 @@ class QuestionController extends Controller
 
         if (($type == 'multiple' || $type == 'single')) {
             foreach ($request['options'][$question_id] as $key => $value) {
-                $option = Option::updateOrCreate([
+                Option::updateOrCreate([
                     'id'            => $key,
                     'question_id'   => $question_id,
+                    'text' => $value
+
                     ], ['text' => $value]);
             }
         }
