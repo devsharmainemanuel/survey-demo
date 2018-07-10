@@ -34,8 +34,7 @@ class QuestionController extends Controller
     public function delete_question($id)
     {
         $question = Question::find($id);
-        $question->status = 'deleted';
-        $question->update();
+        $question->delete();
 
         return redirect('/survey');
     }
@@ -43,10 +42,8 @@ class QuestionController extends Controller
     public function retrieve_question($id)
     {
         //get question by id and update to published
-        $question = Question::find($id);
-        $question->status = 'published';
-        $question->update();
-
+        $question = Question::withTrashed()->find($id)->restore();
+    
         return redirect('/survey');
     }
 

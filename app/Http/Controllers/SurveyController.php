@@ -39,7 +39,7 @@ class SurveyController extends Controller
     public function view_archives()
     {
         //display archieved questions
-        $archieves = Question::where('status', 'deleted')->get();
+        $archieves = Question::onlyTrashed()->get();
 
         return view('admin.retrieve-question', compact('archieves'));
     }
