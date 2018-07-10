@@ -43,7 +43,7 @@ class QuestionController extends Controller
     {
         //get question by id and update to published
         $question = Question::withTrashed()->find($id)->restore();
-    
+
         return redirect('/survey');
     }
 
@@ -59,7 +59,6 @@ class QuestionController extends Controller
         $question->status = 'published';
         $question->survey_id = 1;
         $question->save();
-
 
         if ($question->save() && $request->question_type == 'multiple') {
             $id = $question->id;
@@ -85,9 +84,9 @@ class QuestionController extends Controller
         if ($request->question_type == 'multiple') {
             $id = $request->question_id;
             foreach ($request['answer'][$id] as $key => $value) {
-                $option = Option::updateOrCreate(['id' => $key],[
+                $option = Option::updateOrCreate(['id' => $key], [
                     'question_id' => $id,
-                    'text' => $value
+                    'text'        => $value,
                 ]);
             }
         }
