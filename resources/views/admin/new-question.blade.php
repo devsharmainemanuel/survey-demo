@@ -109,7 +109,7 @@
           });
           $('#add').on('click', function( e ) {
             e.preventDefault();
-          $('.question-choices').append("<input type='text' name='options[]' class='form-control'> <br>");
+          $('.question-choices').append("<input type='text' name='options[]' class='form-control' required> <br>");
         });
         $(document).on('click', 'button.remove', function( e ) {
             e.preventDefault();

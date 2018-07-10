@@ -132,7 +132,7 @@
 
                 $('#add').on('click', function( e ) {
                   e.preventDefault();
-                $('.question-choices').append("<input type='text' name='answer[{{$question->id}}][]' class='form-control'> <br>");
+                $('.question-choices').append("<input type='text' name='answer[{{$question->id}}][]' class='form-control' required> <br>");
               });
 
 
