@@ -60,9 +60,10 @@ class QuestionController extends Controller
         $question->survey_id = 1;
         $question->save();
 
+
         if ($question->save() && $request->question_type == 'multiple') {
             $id = $question->id;
-            foreach ($data['option'] as $key => $value) {
+            foreach ($data['options'] as $key => $value) {
                 $option = new Option();
                 $option->question_id = $id;
                 $option->text = $value;
@@ -84,18 +85,10 @@ class QuestionController extends Controller
         if ($request->question_type == 'multiple') {
             $id = $request->question_id;
             foreach ($request['answer'][$id] as $key => $value) {
-                $option = Option::find($key);
-
-                if ($option) {
-                    $option->question_id = $id;
-                    $option->text = $value;
-                    $option->update();
-                } else {
-                    $option = new Option();
-                    $option->question_id = $id;
-                    $option->text = $value;
-                    $option->save();
-                }
+                $option = Option::updateOrCreate(['id' => $key],[
+                    'question_id' => $id,
+                    'text' => $value
+                ]);
             }
         }
 
