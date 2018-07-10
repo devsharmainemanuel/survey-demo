@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use App\Option;
+
 class QuestionController extends Controller
 {
     /**

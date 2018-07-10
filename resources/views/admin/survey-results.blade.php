@@ -19,7 +19,7 @@
                                              $id = $value->user_id;
                                    @endphp
                               <li class="list-group-item" >
-                                   <a href="/result/{{$id}}"> {{$value->getUser($id)->name}}</a>                               
+                                   <a href="/result/{{$id}}">Guest</a>                               
                               </li>  
                               
                               @endforeach
