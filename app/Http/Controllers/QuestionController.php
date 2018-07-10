@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Option;
 use App\Question;
+use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
