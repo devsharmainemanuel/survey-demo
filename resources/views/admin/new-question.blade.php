@@ -48,10 +48,10 @@
                                              <option value="">--SELECT--</option>                                   
                                              <option value="fillintheblank">Fill in The Blank</option>
                                              <option value="textarea">Textarea</option>
+                                             <option value="truefalse">True Or False</option>
                                              <option value="single">Single Select</option>
                                              <option value="multiple">Multiple Select</option>
-                                             <option value="ratings">Ratings(1-5)</option>
-                                             <option value="custom">Custom</option>
+                                             <option value="ratings">Ratings(1-5)</option>                                        
                                         </select>
                                         @if ($errors->has('question_type'))
                                         <span class="help-block">
@@ -61,16 +61,11 @@
                                    </div>
 
                                    <div class="col-md-2 add-button">
-                                      <button class="btn btn-success" id="add">Add</button>
+                                      <button class="btn btn-success" id="add">Add Options</button>
                                    </div> 
                               </div>
                      
-                              <div class="">
-                                  <div class="form-group ">
-                                      <div class="col-md-6 col-md-offset-4 question-choices">
-                                     
-                                      </div>
-                                 </div>
+                              <div class="question-choices">                                 
                               </div>
                               
                               
@@ -93,59 +88,5 @@
 
 
 @section('script')
-
-<script>
-         
-    $( function() {
-      $('.add-button').hide();
-          $('.select-question-type').on('change',function(){
-            var selected = $(this).val()
-
-
-            if(selected == "multiple"){
-              $('.add-button').show();
-            }
-            console.log(selected);
-          });
-          $('#add').on('click', function( e ) {
-            e.preventDefault();
-          $('.question-choices').append("<input type='text' name='options[]' class='form-control' required> <br>");
-        });
-        $(document).on('click', 'button.remove', function( e ) {
-            e.preventDefault();
-            $(this).closest( 'div.new-text-div' ).remove();
-        });
-
-        });
-     </script>
-
-{{--  <script>
-
-     $('.select-question-type').on('change',function(){
-          console.log($(this).val());
-          var selected = $(this).val();
-          
-          var data =  ""; 
-             if(selected == "single"){
-                    data += "<div class='form-group'>";
-                    data += "<label for='title' class='col-md-4 control-label'>Choices</label>";
-                    data += "<div class='col-md-6'>";
-                    data += " <ul id='choice-list'><li><input type='text' class='form-control'></li>";
-                    data += " </ul><button type='button' id='add-choices' class=' btn btn-primary'>add</button>";
-                    data += "</div>";                    
-                    data += "</div>";
-
-                    
-               }
-               $('.question-choices').append(data);
-               });
-
-
-
-               $('#add-choices').click(function(){
-                    console.log("test")
-                     $('#choice-list').append("<li><input type='text' class='form-control'></li>");    
-               });
-          </script>
-            --}}
-          @endsection
+    <script src="{{ asset('js/options.js') }}"></script>
+@endsection
