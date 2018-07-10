@@ -73,7 +73,6 @@ class QuestionController extends Controller
 
     public function update_question(Request $request)
     {
-
         $question = Question::find($request->question_id);
         $question->title = $request->title;
         $question->question_type = $request->question_type;
@@ -92,7 +91,7 @@ class QuestionController extends Controller
                 Option::updateOrCreate([
                     'id'            => $key,
                     'question_id'   => $question_id,
-                    'text' => $value
+                    'text'          => $value,
 
                     ], ['text' => $value]);
             }
