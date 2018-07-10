@@ -58,9 +58,9 @@ class QuestionController extends Controller
         $question->save();
 
         $type = $request->question_type;
+        $id = $question->id;
         if (($type == 'multiple' || $type == 'single')) {
-            $id = $question->id;
-            foreach ($data['options'] as $key => $value) {
+            foreach ($request['options'] as $key => $value) {
                 $option = new Option();
                 $option->question_id = $id;
                 $option->text = $value;
