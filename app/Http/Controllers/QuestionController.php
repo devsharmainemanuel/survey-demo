@@ -38,6 +38,7 @@ class QuestionController extends Controller
         
         return redirect('/survey');
     }
+    
     public function retrieve_question($id)
     {
         //get question by id and update to published
