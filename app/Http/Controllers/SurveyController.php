@@ -63,7 +63,7 @@ class SurveyController extends Controller
     //RESULTS
     public function view_results()
     {
-        $answers = Answer::distinct()->get(['user_id']);
+        $answers = Answer::with('user')->distinct()->get(['user_id']);
 
         return view('admin.survey-results', compact('answers'));
     }

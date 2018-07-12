@@ -15,13 +15,9 @@
                     <div class="panel-body">                         
                          <ul class="list-group">
                               @foreach ($answers as $key => $value )
-                                   @php
-                                             $id = $value->user_id;
-                                   @endphp
                               <li class="list-group-item" >
-                                   <a href="/result/{{$id}}">Guest</a>                               
+                                   <a href="/result/{{$value->user_id}}">{{$value->user->name}}</a>                               
                               </li>  
-                              
                               @endforeach
                          </ul>
                     </div>

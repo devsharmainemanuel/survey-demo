@@ -58,24 +58,20 @@
                                         @endphp
                                         
                                         <div class="row">
-                                             <div class="col-md-6">
-                                                  
-                                                  <div class="input-group">
-                                                       <span class="input-group">
-                                                            <input type="radio" {{$ans == 'yes' ? 'checked' : '' }} > YES
-                                                       </span>
+                                                  @foreach($question->options as $option)                         
+                                                  <div class="col-md-6">
+                                                       
+                                                       <div class="input-group">
+                                                            <span class="input-group">
+                                                                 
+                                                                 <input type="radio" name="answer[{{$question->id}}][{{$option->id}}]" value="{{$option->id}}" {{ $ans == $option->id ? 'checked' : '' }}  > {{$option->text}}
+                                                            </span>
+                                                       </div>
+                                                       
                                                   </div>
                                                   
-                                             </div>
-                                             <div class="col-md-6">
-                                                  
-                                                  <div class="input-group">
-                                                       <span class="input-group">
-                                                            <input type="radio" {{$ans == 'no' ? "checked" : '' }} > NO
-                                                       </span>                                
-                                                  </div>
-                                                  
-                                             </div>
+                                                  @endforeach
+
                                         </div>
                                         @elseif($question->question_type == "textarea")
                                         <textarea type="text"class="form-control">{{$answer->answer}} </textarea>
