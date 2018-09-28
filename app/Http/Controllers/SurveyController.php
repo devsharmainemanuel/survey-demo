@@ -26,10 +26,29 @@ class SurveyController extends Controller
     public function index()
     {
         //display published questions
-        $questions = Question::where('status', 'published')->orderBy('sort_order')->get();
+        //$questions = Question::where('status', 'published')->orderBy('sort_order')->get();
 
-        return view('admin.survey', compact('questions', 'archieves'));
+        return view('admin.survey.list', compact('questions', 'archieves'));
     }
+
+
+    /**
+     * 
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.survey.create');
+    }
+
+
+    
+
+
+
+
+
 
     /**
      * Show the deleted questions.
@@ -59,23 +78,6 @@ class SurveyController extends Controller
 
         return $data;
     }
-
-    //RESULTS
-    public function view_results()
-    {
-        $answers = Answer::distinct()->get(['user_id']);
-
-        return view('admin.survey-results', compact('answers'));
-    }
-
-    public function user_result($id)
-    {
-        //get all answer of specific user
-        $questions = Question::where('status', 'published')->get();
-        $answers = Answer::where('user_id', $id)->get();
-
-        return view('admin.user-result', compact('questions', 'answers'));
-    }
-
-    //END RESULTS
+    
+ 
 }

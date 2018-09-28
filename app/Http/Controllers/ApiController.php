@@ -19,6 +19,19 @@ class ApiController extends Controller
 
     public function submit_survey(Request $request)
     {
-        return $request['answers'];
+        return $request['answer'];
+    }
+
+    public function getSurveyCategory()
+    {
+        $sub_cat = ['education','poll'];
+        return $sub_cat;
+    }
+
+    public function submit_surveyCategory(Request $request)
+    {
+        return response()
+        ->json($request['name']);
+
     }
 }
