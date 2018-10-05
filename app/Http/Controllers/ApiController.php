@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Survey;
+use App\SurveyQuestions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ApiController extends Controller
 {
@@ -32,6 +35,22 @@ class ApiController extends Controller
     {
         return response()
         ->json($request['name']);
+
+    }
+
+    
+    public function check($slug)
+    {
+      $surveys = Survey::where('url',$slug)->get();       
+      $questions = new Collection();
+       foreach ($surveys as $survey) {
+          foreach ($survey->survey_questions as $key => $value) {    
+            $questions->push($value->question);          
+          }
+       }
+       $surveys->survey_questions = $questions;
+        return response()
+        ->json($surveys);
 
     }
 }

@@ -24,10 +24,17 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //survey
 Route::get('/survey', 'SurveyController@index')->name('survey');
-Route::post('/survey/category/create', 'SurveyCategoryController@store')->name('survey-category');
+Route::post('/survey/store', 'SurveyController@store');
+
+Route::get('/survey/{id}/assignQuestions', 'SurveyController@assign_questions');
+Route::post('/survey-questions/store', 'SurveyController@store_surveyQuestions');
 
 
+
+Route::post('/survey/category/create', 'SurveyCategoryController@store');
 Route::get('/survey/archives', 'SurveyController@view_archives')->name('archives');
+
+
 
 //reports
 Route::get('/reports', 'ReportsController@index')->name('reports');
